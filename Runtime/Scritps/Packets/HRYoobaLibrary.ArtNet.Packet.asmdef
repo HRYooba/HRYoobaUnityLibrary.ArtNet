@@ -1,0 +1,16 @@
+{
+    "name": "HRYoobaLibrary.ArtNet.Packet",
+    "rootNamespace": "",
+    "references": [
+        "GUID:362079992c11a724f9420ed1c923fb84"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
