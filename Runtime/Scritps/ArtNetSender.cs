@@ -22,8 +22,16 @@ namespace HRYooba.ArtNet
         /// </summary>
         public ArtNetSender(string hostname, int port = ArtNetDefine.Port)
         {
-            _udpClient = new UdpClient(hostname, port);
             _cancellationTokenSource = new CancellationTokenSource();
+            
+            try
+            {
+                _udpClient = new UdpClient(hostname, port);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         ~ArtNetSender()
@@ -39,7 +47,7 @@ namespace HRYooba.ArtNet
             if (_disposed) return;
             _disposed = true;
 
-            _udpClient.Dispose();
+            _udpClient?.Dispose();
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
@@ -51,6 +59,8 @@ namespace HRYooba.ArtNet
         /// <param name="artDmxData"></param>
         public void SendDmx(ArtDmxData artDmxData)
         {
+            if (_udpClient == null) return;
+
             var artDmxPacket = new ArtDmxPacket(artDmxData.Universe, artDmxData.Data);
             var buffer = artDmxPacket.ToBytes();
             var _ = SendAsync(buffer, _cancellationTokenSource.Token);
@@ -65,7 +75,7 @@ namespace HRYooba.ArtNet
         {
             try
             {
-                await _udpClient.SendAsync(buffer, buffer.Length);
+                await _udpClient?.SendAsync(buffer, buffer.Length);
                 cancellationToken.ThrowIfCancellationRequested();
             }
             catch (ObjectDisposedException)

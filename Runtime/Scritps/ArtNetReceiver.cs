@@ -26,11 +26,18 @@ namespace HRYooba.ArtNet
         /// </summary>
         public ArtNetReceiver(string hostname, int port = ArtNetDefine.Port)
         {
-            _udpClient = new UdpClient(hostname, port);
             _cancellationTokenSource = new CancellationTokenSource();
             _onDmxReceivedSubject = new Subject<ArtDmxData>();
 
-            var _ = ReceiveAsync(_cancellationTokenSource.Token);
+            try
+            {
+                _udpClient = new UdpClient(hostname, port);
+                var _ = ReceiveAsync(_cancellationTokenSource.Token);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         ~ArtNetReceiver()
@@ -46,7 +53,7 @@ namespace HRYooba.ArtNet
             if (_disposed) return;
             _disposed = true;
 
-            _udpClient.Dispose();
+            _udpClient?.Dispose();
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
@@ -65,7 +72,7 @@ namespace HRYooba.ArtNet
             {
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    var result = await _udpClient.ReceiveAsync();
+                    var result = await _udpClient?.ReceiveAsync();
                     var buffer = result.Buffer;
                     cancellationToken.ThrowIfCancellationRequested();
 
