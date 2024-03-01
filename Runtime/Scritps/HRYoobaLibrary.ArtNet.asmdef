@@ -2,9 +2,9 @@
     "name": "HRYoobaLibrary.ArtNet",
     "rootNamespace": "",
     "references": [
-        "UniRx",
         "HRYoobaLibrary.ArtNet.Core",
-        "HRYoobaLibrary.ArtNet.Packet"
+        "HRYoobaLibrary.ArtNet.Packet",
+        "R3.Unity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

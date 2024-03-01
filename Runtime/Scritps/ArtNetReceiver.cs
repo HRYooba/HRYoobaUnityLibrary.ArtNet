@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-using UniRx;
+using R3;
 using HRYooba.ArtNet.Packet;
 using HRYooba.ArtNet.Core;
 
@@ -19,7 +19,7 @@ namespace HRYooba.ArtNet
         private readonly CancellationTokenSource _cancellationTokenSource = null;
 
         private readonly Subject<ArtDmxData> _onDmxReceivedSubject = null;
-        public IObservable<ArtDmxData> OnDmxReceivedObservable => _onDmxReceivedSubject.ObserveOnMainThread();
+        public Observable<ArtDmxData> OnDmxReceivedObservable => _onDmxReceivedSubject.ObserveOnMainThread();
 
         /// <summary>
         /// ArtNetReceiver
