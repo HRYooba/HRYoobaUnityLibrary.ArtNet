@@ -6,7 +6,8 @@ ProjectSetting/PackageManagerから以下のScopeRegistriesを設定
 - Scope(s): 
   - `com.hryooba`
   - `com.cysharp`
-
+  - `org.nuget`
+  
 ### 1.2 R3のインストール
 https://github.com/Cysharp/R3?tab=readme-ov-file#unity
 を参考にインストールする。 
