@@ -1,7 +1,11 @@
 {
-    "name": "HRYoobaLibrary.ArtNet.Core",
+    "name": "HRYooba.ArtNet",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "HRYooba.ArtNet.Core",
+        "HRYooba.ArtNet.Packet",
+        "R3.Unity"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
