@@ -1,9 +1,9 @@
 {
-  "name": "com.hryooba.library.artnet",
-  "displayName": "HRYoobaLibrary.ArtNet",
-  "version": "2.0.1",
+  "name": "com.hryooba.artnet",
+  "displayName": "HRYooba.ArtNet",
+  "version": "3.0.0",
   "unity": "2021.3",
-  "description": "Unity HRYooba Library\nArtNet",
+  "description": "Unity HRYooba\nArtNet",
   "author": {
     "name": "HRYooba"
   },
